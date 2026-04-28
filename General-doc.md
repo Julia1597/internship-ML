@@ -142,7 +142,7 @@ Ce dataset contient des données d’énergie éolienne provenant de quatre loca
 
 ## 3. Variables sélectionnées
 
-Les variables suivantes ont été sélectionnées pour l’analyse :
+Les variables suivantes ont été sélectionnées dans la locasition3 pour l’analyse :
 
 - Time  
 - Temperature  
@@ -159,9 +159,9 @@ Ces variables ont été choisies car elles influencent directement la production
 
 Le projet est réalisé en équipe, avec une répartition des tâches :
 
-- Détection d’anomalies  
-- Automatisation des pipelines  
-- Data drift & monitoring  
+- Détection d’anomalies  -> Jephtina
+- Automatisation des pipelines  -> Toimaya
+- Data drift & monitoring   -> Julia
 
 Objectif :  
 Répartir le travail tout en gardant une cohérence globale.
@@ -173,7 +173,7 @@ Répartir le travail tout en gardant une cohérence globale.
 Le projet est organisé avec GitHub :
 
 - Chaque membre travaille sur sa propre branche  
-- La branche `main` contient le dataset final nettoyé  
+- La branche `main` contient le dataset final  
 - Les branches sont fusionnées dans la branche principale  
 
 Objectif :  
@@ -181,34 +181,8 @@ Permettre un travail collaboratif tout en conservant une version stable des donn
 
 ---
 
-## 6. Préparation des données
 
-Avant l’analyse, les données ont été préparées :
-
-- Gestion des valeurs manquantes  
-- Sélection des variables pertinentes  
-- Formatage des données (temps, structure)  
-- Vérification de la cohérence  
-
-Objectif :  
-Obtenir des données propres et exploitables.
-
----
-
-## 7. Objectif global du système
-
-Le système vise à :
-
-- Détecter des anomalies dans les données  
-- Automatiser le traitement des données  
-- Surveiller les dérives (data drift)  
-
-Objectif :  
-Construire un système de monitoring fiable et évolutif.
-
----
-
-## 8. Structure du projet
+## 6. Structure du projet
 
 Ce document présente une vue générale du projet.
 
@@ -218,12 +192,3 @@ Chaque partie est détaillée dans une documentation spécifique :
 - Documentation automatisation du pipeline  
 - Documentation data drift & monitoring  
 
----
-
-## 9. Perspectives
-
-Les prochaines étapes consistent à :
-
-- Améliorer l’automatisation du pipeline  
-- Développer des outils de monitoring  
-- Intégrer les résultats dans un dashboard  
