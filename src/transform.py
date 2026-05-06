@@ -36,3 +36,32 @@ Dépendances possibles :
 - pandas
 - numpy
 """
+
+import pandas as pd
+
+
+def transform_data(df: pd.DataFrame) -> pd.DataFrame:
+    # Supprime les doublons
+    df = df.drop_duplicates()
+
+    # Supprime les lignes vides
+    df = df.dropna()
+
+    # Colonnes minuscules
+    df.columns = [col.lower() for col in df.columns]
+    df.columns = df.columns.str.strip()
+    df.columns = df.columns.str.replace(" ", "_")
+    
+    # Conversion date
+    df["date"] = pd.to_datetime(df["date"])
+
+    
+    # conversion des types de données
+    for col in df.columns:
+        if df[col].dtype == "object":
+            try:
+                df[col] = pd.to_datetime(df[col])
+            except (ValueError, TypeError):
+                pass
+
+    return df

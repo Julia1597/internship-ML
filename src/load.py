@@ -34,3 +34,18 @@ Cas d'utilisation courants :
 Dépendances possibles :
 - pandas
 """
+
+
+from pathlib import Path
+import pandas as pd
+
+
+OUTPUT_PATH = Path("output/clean_data.csv")
+
+
+def load_data(df: pd.DataFrame):
+    OUTPUT_PATH.parent.mkdir(exist_ok=True)
+
+    df.to_csv(OUTPUT_PATH, index=False)
+
+    print(f"Fichier sauvegardé : {OUTPUT_PATH}")
