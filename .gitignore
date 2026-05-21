@@ -1,0 +1,14 @@
+.venv/
+# Python bytecode 
+__pycache__/
+*.pyc
+
+# Données lourdes 
+data/Location3Final.csv
+
+# Graphiques générés automatiquement 
+*.png
+graphique_iforest.png
+graphique_lof.png
+plot.png
+visualisation_puissance.png
