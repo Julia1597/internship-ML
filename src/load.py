@@ -49,3 +49,35 @@ def load_data(df: pd.DataFrame):
     df.to_csv(OUTPUT_PATH, index=False)
 
     print(f"Fichier sauvegardé : {OUTPUT_PATH}")
+    
+def save_anomalies(anomalies_df, period_id):
+
+    output_path = Path(
+        f"output/anomalies/anomalies_period_{period_id}.csv"
+    )
+
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    anomalies_df.to_csv(
+        output_path,
+        index=False
+    )
+
+def save_drift(results_df, period_id):
+
+    output_path = Path(
+        f"output/drift/drift_period_{period_id}.csv"
+    )
+
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    results_df.to_csv(
+        output_path,
+        index=False
+    )

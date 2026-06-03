@@ -1,6 +1,9 @@
-def run_anomaly_detection(df_period):
+import pandas as pd
 
-    # Code du collègue ici
-    anomalies = df_period[df_period["value"] > 100]
+
+def run_anomaly_detection(df_period: pd.DataFrame):
+
+    # Placeholder temporaire
+    anomalies = pd.DataFrame()
 
     return anomalies
