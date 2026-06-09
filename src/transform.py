@@ -53,8 +53,10 @@ def transform_data(df: pd.DataFrame) -> pd.DataFrame:
     df.columns = df.columns.str.replace(" ", "_")
     
     # Conversion date
-    df["date"] = pd.to_datetime(df["date"])
-
+    df["time"] = pd.to_datetime(
+    df["time"],
+    dayfirst=True
+)
     
     # conversion des types de données
     for col in df.columns:

@@ -26,17 +26,16 @@ Règles importantes :
 Dépendances possibles :
 - pandas
 """
-_________________________________________
 
 
 from pathlib import Path
 import pandas as pd
 
 
-DATA_PATH = Path("data/location3Final.csv")
+DATA_PATH = Path("data/Location3Final.csv")
 
 
 def extract_data():
-    df = pd.read_csv(DATA_PATH)
+    df = pd.read_csv(DATA_PATH, sep=";")
     return df
 
