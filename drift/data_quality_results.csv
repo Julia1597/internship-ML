@@ -1,0 +1,5 @@
+variable,missing_values,missing_percentage,outliers,outlier_percentage,lower_bound,upper_bound
+temperature_2m,0,0.0,8,0.02,-22.6,123.0
+relativehumidity_2m,0,0.0,1,0.0,13.0,125.0
+windspeed_100m,0,0.0,308,0.7,-1.29,15.16
+Power,0,0.0,0,0.0,-0.56,1.13
