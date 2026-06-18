@@ -2,10 +2,35 @@ import streamlit as st
 import pandas as pd
 import os
 
+# Page configuration
+
 st.set_page_config(
     page_title="Data Drift Monitoring Dashboard",
     layout="wide"
 )
+
+
+# Function to load CSV files correctly
+
+
+def load_csv(file_path):
+    """
+    Load a CSV file and automatically detect the separator.
+    Lire un fichier CSV en détectant automatiquement le séparateur.
+    """
+    try:
+        df = pd.read_csv(file_path, sep=None, engine="python")
+    except Exception:
+        df = pd.read_csv(file_path)
+
+    # Clean column names
+    # Nettoyage des noms de colonnes
+    df.columns = df.columns.str.strip()
+
+    return df
+
+
+# Dashboard title
 
 st.title("Data Drift & Quality Monitoring Dashboard")
 
@@ -15,31 +40,53 @@ It includes drift detection results, data quality checks, and a comparison betwe
 the manual implementation and the automated pipeline.
 """)
 
+
+
+# 1. Drift Detection Results
+
 st.header("1. Drift Detection Results")
 
 drift_file = "drift/drift_results.csv"
 
 if os.path.exists(drift_file):
-    drift_df = pd.read_csv(drift_file)
-    st.dataframe(drift_df)
+    drift_df = load_csv(drift_file)
+
+    st.dataframe(
+        drift_df,
+        use_container_width=True,
+        hide_index=True
+    )
 
     st.subheader("PSI by Variable")
 
     image_file = "drift/psi_by_variable.png"
+
     if os.path.exists(image_file):
-        st.image(image_file, caption="PSI values by variable with drift thresholds")
+        st.image(
+            image_file,
+            caption="PSI values by variable with drift thresholds",
+            use_container_width=True
+        )
     else:
         st.warning("PSI graph not found.")
 else:
     st.warning("drift_results.csv not found.")
+
+
+# 2. Data Quality Checks
 
 st.header("2. Data Quality Checks")
 
 quality_file = "drift/data_quality_results.csv"
 
 if os.path.exists(quality_file):
-    quality_df = pd.read_csv(quality_file)
-    st.dataframe(quality_df)
+    quality_df = load_csv(quality_file)
+
+    st.dataframe(
+        quality_df,
+        use_container_width=True,
+        hide_index=True
+    )
 
     st.write("""
     These checks include missing values, duplicated rows and outlier detection.
@@ -47,13 +94,22 @@ if os.path.exists(quality_file):
 else:
     st.warning("data_quality_results.csv not found.")
 
+# 3. Manual and Automated Results Comparison
+
+
 st.header("3. Manual and Automated Results Comparison")
 
 comparison_file = "output/comparaison/drift_comparaison.csv"
 
 if os.path.exists(comparison_file):
-    comparison_df = pd.read_csv(comparison_file)
-    st.dataframe(comparison_df)
+    comparison_df = load_csv(comparison_file)
+
+    st.dataframe(
+        comparison_df,
+        use_container_width=True,
+        hide_index=True,
+        height=400
+    )
 
     st.write("""
     The manual approach gives a global comparison between reference and recent data.
@@ -62,6 +118,10 @@ if os.path.exists(comparison_file):
     """)
 else:
     st.warning("drift_comparaison.csv not found.")
+
+
+
+# 4. Conclusion
 
 st.header("4. Conclusion")
 
