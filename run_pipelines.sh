@@ -6,4 +6,4 @@ set -e
 source .venv/bin/activate
 
 # Lancement pipeline
-python Main.py
+python main.py
